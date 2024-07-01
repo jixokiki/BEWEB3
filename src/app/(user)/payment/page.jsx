@@ -109,7 +109,7 @@ const Payment = () => {
         setIsLoading(true);
 
         // Fetch all user documents from Firestore
-        const usersCollection = collection(db, "usersCuti");
+        const usersCollection = collection(db, "userPengajuanCuti");
         const q = query(usersCollection, orderBy("timeStamp", "desc"));
         const querySnapshot = await getDocs(q);
 
@@ -126,9 +126,9 @@ const Payment = () => {
   }, []);
 
   return (
-    <div>
+    <div className="bg-sky-200 min-h-screen flex flex-col">
       <Navbar />
-      <div className="max-w-6xl mx-auto p-6 bg-white md:border rounded-md md:shadow-md mt-36">
+      <div className="max-w-9xl mx-auto p-6 bg-sky-300 border- md:border rounded-md md:shadow-md mt-36">
         <h2 className="text-2xl font-semibold mb-6">Payment Page</h2>
         {isLoading ? (
           <p>Loading...</p>
@@ -140,9 +140,13 @@ const Payment = () => {
                 <th className="py-2 px-4 border-b">Fullname</th>
                 <th className="py-2 px-4 border-b">Email</th>
                 <th className="py-2 px-4 border-b">Bank</th>
+                <th className="py-2 px-4 border-b">Total Cuti</th>
                 <th className="py-2 px-4 border-b">Account Number</th>
+                <th className="py-2 px-4 border-b">Tanggal Hari ini</th>
                 <th className="py-2 px-4 border-b">Tanggal Pengajuan Cuti</th>
+                <th className="py-2 px-4 border-b">Tanggal Akhir Cuti</th>
                 <th className="py-2 px-4 border-b">Amount</th>
+                <th className="py-2 px-4 border-b">Salary Cut</th>
                 <th className="py-2 px-4 border-b">Reason</th>
                 <th className="py-2 px-4 border-b">Status</th>
               </tr>
@@ -154,9 +158,13 @@ const Payment = () => {
                   <td className="py-2 px-4 border-b">{item.fullname}</td>
                   <td className="py-2 px-4 border-b">{item.email}</td>
                   <td className="py-2 px-4 border-b">{item.bank}</td>
-                  <td className="py-2 px-4 border-b">{item.nomorAkun}</td>
+                  <td className="py-2 px-4 border-b">{item.totalCuti}</td>
+                  <td className="py-2 px-4 border-b">{item.accountNumber}</td>
                   <td className="py-2 px-4 border-b">{item.timeStamp ? new Date(item.timeStamp.seconds * 1000).toLocaleDateString() : ""}</td>
+                  <td className="py-2 px-4 border-b">{item.startDate}</td>
+                  <td className="py-2 px-4 border-b">{item.endDate}</td>
                   <td className="py-2 px-4 border-b">{item.amount}</td>
+                  <td className="py-2 px-4 border-b">{item.salary}</td>
                   <td className="py-2 px-4 border-b">{item.reason}</td>
                   <td className="py-2 px-4 border-b">{item.diterimaAcc || "Pending"}</td>
                 </tr>

@@ -24,9 +24,9 @@ export default function Home() {
     }
   }, [user, userProfile, router]);
   return (
-    <div>
+    <div className="bg-sky-200 min-h-screen flex flex-col">
       <Navbar />
-      <div className="overflow-hidden flex justify-center mb-2 mt-64">
+      <div className="overflow-hidden flex justify-center mb-2 mt-64 stroke-sky-500 ">
         <Image
           src={"/assets/bealogo.png"}
           width={550}
